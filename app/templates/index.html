@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<form class="form" action="/pokemon" method="POST">
+            
+    <h1>Welcome to timi PoKedex</h1>
+    Pokemon by Index
+    <input type="number" name="numero" class="form-control" placeholder="Enter an index">
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    <br>Pokemon by Type
+    <select name="typ" id="" class="form-control">
+        <option value="" selected class="disabled">Select a specific type</option>
+        {% for type in types:%}
+        <option value={{ type }}>{{ type }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>{% endblock %}
+

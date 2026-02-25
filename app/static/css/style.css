@@ -1,0 +1,83 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: inline-block;
+    padding: 20px;
+    border: 2px ridge rgba(131, 228, 171, 0.473);
+}
+form>input,form>select{
+    border: 1px ridge black;
+    box-shadow: 4px 0 10px black;
+    margin: 0 0 5px 0;
+}
+form>select{
+    margin-top: 10px;
+}
+nav{
+    background-color: azure;
+    
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    font-size: larger;
+    
+}
+nav>ul>li{
+    color: rgb(138, 135, 132);
+    cursor: pointer;
+}
+/* nav>ul>li,.focus,nav ul li,.active{
+    color: black;
+    border: 2px solid rgba(66, 62, 62, 0.322);
+} */
+
+main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: inline-block;
+            padding: 20px;
+            border: 2px ridge rgba(131, 228, 171, 0.473);
+        }
+        form>input,form>select{
+            border: 1px ridge black;
+            box-shadow: 4px 0 10px black;
+            margin: 0 0 5px 0;
+        }
+        form>select{
+            margin-top: 10px;
+        }
+        nav{
+            background-color: azure;
+            
+        }
+        nav ul{
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            font-size: larger;
+            
+        }
+        nav>ul>li{
+            color: rgb(138, 135, 132);
+            cursor: pointer;
+        }
+        nav>ul>li:has(>.active){
+            color: green;
+            font-weight: bolder;
+
+            /* border: 2px solid rgba(7, 102, 30, 0.43);
+            border-radius: 50%; */
+        }

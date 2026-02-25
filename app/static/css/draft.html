@@ -1,0 +1,5 @@
+pour faire une part de page qu'on peut utiliser partout,on peut faire
+<nav>{% block content %}{% endblock %}</nav> 
+il s'agit du block qui sera remplace dans les vrais pages  en usant {% block content%}contenu a remplacer{% endblock%}
+mais il faut inserer dans la page utilisatrice 
+{% extends "partie_partagee.html" %} au depart et puis donner les valeurs aux blocks 
