@@ -1,2 +1,2 @@
 Bienvenu dans un simple pokedex
-djhgfdihufgdfuhui
+blah blah blah
