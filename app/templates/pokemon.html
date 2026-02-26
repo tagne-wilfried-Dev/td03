@@ -3,34 +3,34 @@
 {% if index=='true' %}
     <div class="card">
 			
-	<img class="card-img-top" src="{{img}}" alt="{{data["Name"]}} image">
+	<img class="card-img-top" src="{{ data.getUrl() }}" alt="{{ data .name }} image">
 	
 	<div class="card-body">
-		<h1 class="card-title">{{data["Name"] | french | capitalize}}</h1> <span class="badge rounded-pill text-bg-light"><i class="bi bi-hammer"></i>434</span><span class="badge rounded-pill text-bg-light"><i class="bi bi-shield"></i>513</span>
+		<h1 class="card-title">{{ data .name | french | capitalize}}</h1> <span class="badge rounded-pill text-bg-light"><i class="bi bi-hammer"></i>{{ data.getGlobalAttack() | round }}</span><span class="badge rounded-pill text-bg-light"><i class="bi bi-shield"></i>{{ data.getGlobalDefense() | round }}</span>
 		
-		<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#Bulbasaur">See stats</button>
+		<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#{{ data .name }}">See stats</button>
 
-		<div id="Bulbasaur" class="collapse">
+		<div id="{{ data .name }}" class="collapse">
 			
-				<p class="card-text"><strong>number:</strong> {{data["Number"]}}</p>
+				<p class="card-text"><strong>number:</strong> {{ data.number }}</p>
 			
-				<p class="card-text"><strong>name:</strong> {{data["Name"] | french | capitalize  }}</p>
+				<p class="card-text"><strong>name:</strong> {{ data.name | french | capitalize  }}</p>
 			
-				<p class="card-text"><strong>type1:</strong> {{data["Type_1"]}} </p>
+				<p class="card-text"><strong>type1:</strong> {{ data.type }} </p>
 			
-				<p class="card-text"><strong>generation:</strong> {{data["Generation"]}} </p>
+				<p class="card-text"><strong>generation:</strong> {{ data.generation }} </p>
 			
-				<p class="card-text"><strong>attack:</strong> {{data["Attack"]}} </p>
+				<p class="card-text"><strong>attack:</strong> {{ data.attack }} </p>
 			
-				<p class="card-text"><strong>defense:</strong>{{data["Defense"]}} </p>
+				<p class="card-text"><strong>defense:</strong>{{ data.defense }} </p>
 			
-				<p class="card-text"><strong>sp_atk:</strong> {{data["Sp_Atk"]}} </p>
+				<p class="card-text"><strong>sp_atk:</strong> {{ data.spAttack }} </p>
 			
-				<p class="card-text"><strong>sp_def:</strong> {{data["Sp_Def"]}} </p>
+				<p class="card-text"><strong>sp_def:</strong> {{ data.spDefense }} </p>
 			
-				<p class="card-text"><strong>speed:</strong> {{data["Speed"]}} </p>
+				<p class="card-text"><strong>speed:</strong> {{ data.speed }} </p>
 			
-				<p class="card-text"><strong>hp:</strong> {{data["HP"]}} </p>
+				<p class="card-text"><strong>hp:</strong> {{ data.hP }} </p>
 			
 		</div>
 
@@ -41,22 +41,21 @@
 <div class="row row-cols-4">			
 	{% for data in liste %}
     	<div class="card col-md-3 m-2">			
-			<img class="card-img-top" src="{{data['url']}}" alt="{{data["Name"]}} image">	
+			<img class="card-img-top" src="{{ data.getUrl() }}" alt="{{data .name }} image">	
 			<div class="card-body">
-				<h1 class="card-title">{{data["Name"]}}</h1> <span class="badge rounded-pill text-bg-light"><i class="bi bi-hammer"></i>434</span><span class="badge rounded-pill text-bg-light"><i class="bi bi-shield"></i>513</span>
-				<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#{{data["Number"]}}">See stats</button>
-				<div id="{{data["Number"]}}" class="collapse">			
-					<p class="card-text"><strong>number:</strong> {{data["Number"]}}</p>
-					<p class="card-text"><strong>name:</strong> {{data["Name"]}}</p>			
-					<p class="card-text"><strong>type1:</strong> {{data["Type_1"]}} </p>			
-					<p class="card-text"><strong>type2:</strong> {{data["Type_2"]}} </p>			
-					<p class="card-text"><strong>generation:</strong> {{data["Generation"]}} </p>			
-					<p class="card-text"><strong>attack:</strong> {{data["Attack"]}} </p>			
-					<p class="card-text"><strong>defense:</strong>{{data["Defense"]}} </p>			
-					<p class="card-text"><strong>sp_atk:</strong> {{data["Sp_Atk"]}} </p>			
-					<p class="card-text"><strong>sp_def:</strong> {{data["Sp_Def"]}} </p>			
-					<p class="card-text"><strong>speed:</strong> {{data["Speed"]}} </p>			
-					<p class="card-text"><strong>hp:</strong> {{data["HP"]}} </p>		
+				<h1 class="card-title">{{ data.name }}</h1> <span class="badge rounded-pill text-bg-light"><i class="bi bi-hammer"></i>{{ data.getGlobalAttack() | round }}</span><span class="badge rounded-pill text-bg-light"><i class="bi bi-shield"></i>{{ data.getGlobalDefense() | round }}</span>
+				<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#{{ data.number }}">See stats</button>
+				<div id="{{data .number }}" class="collapse">			
+					<p class="card-text"><strong>number:</strong> {{ data.number }}</p>
+					<p class="card-text"><strong>name:</strong> {{ data.name }}</p>			
+					<p class="card-text"><strong>type1:</strong> {{ data.type }} </p>		
+					<p class="card-text"><strong>generation:</strong> {{ data.Generation }} </p>			
+					<p class="card-text"><strong>attack:</strong> {{ data.attack }} </p>			
+					<p class="card-text"><strong>defense:</strong>{{ data.defense }} </p>			
+					<p class="card-text"><strong>sp_atk:</strong> {{ data.spAttack }} </p>			
+					<p class="card-text"><strong>sp_def:</strong> {{ data.spdefense }} </p>			
+					<p class="card-text"><strong>speed:</strong> {{ data.speed }} </p>			
+					<p class="card-text"><strong>hp:</strong> {{ data.hP }} </p>		
 				</div>
 			</div>
 		</div>

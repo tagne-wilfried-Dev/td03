@@ -1,11 +1,11 @@
-from flask import render_template,redirect,url_for
+from flask import render_template,redirect,url_for 
 from app import app
 import json
+from app.services.PokemonService import PokemonService
 
 class IndexController:
     
-    with open(app.static_folder+"/data/pokemons.json","r",encoding="UTF-8") as f:
-        pokemons = json.load(f)
+    pokemons = PokemonService()
 
 @app.route("/", methods=["GET"])
 def rentrer():
@@ -13,10 +13,6 @@ def rentrer():
 
 @app.route("/index", methods=["GET"])
 def index():
-    liste = []
-    for p in IndexController.pokemons:
-        if not(p["Type_1"] in liste ):
-            liste.append(p["Type_1"])
-        if not( p["Type_2"] in liste ):
-            liste.append(p["Type_2"])
+    # on recupere la liste des types de pokemon pour notre liste deroulante
+    liste = IndexController.pokemons.getPokemonTypes()
     return render_template("index.html", types = liste,metadata ={"title":'home Page', "pagename":'index'})

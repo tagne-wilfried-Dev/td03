@@ -1,7 +1,7 @@
 from app.models.pokemonJsonDAO import PokemonJsonDAO as PokemonDAO
 
 class PokemonService:
-    # pokemonDAO = None
+    
     pokemonDAO = PokemonDAO()
     def __init__():
         PokemonService.pokemonDAO = PokemonDAO()
@@ -13,13 +13,13 @@ class PokemonService:
         else:
             return [pokemon]
     
-    def getPokemonTypes(self,type):
+    def getPokemonTypes(self):
         pokemons = PokemonService.pokemonDAO.findAll()
-        listTypes = []
+        typesList = []
         for p in pokemons:
-            if p.type not in listTypes:
-                listTypes.append(p.type)
-        return listTypes
+            if p.type not in typesList:
+                typesList.append(p.type)
+        return typesList
     
     def getPokemonByType(self,type):
         listOfType = PokemonService.pokemonDAO.findByType(type)

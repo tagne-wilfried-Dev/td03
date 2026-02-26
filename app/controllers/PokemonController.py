@@ -1,58 +1,44 @@
 from app import app
 from flask import render_template,url_for,redirect,request
 import json
-
+from app.services.PokemonService import PokemonService
 class PokemonController:
     
-    with open(app.static_folder+"/data/pokemons.json","r",encoding="UTF-8") as f:
-        pokemons = json.load(f)
-     
+    pokemons = PokemonService()
+
+    # afficher les details d'un pokemon selon son numero par get !!mais pas utilise
     @app.route("/pokemon/<int:pokedex_id>", methods=["GET"])    
     def pokemonView(pokedex_id):
-        for p in PokemonController.pokemons:
-            if(p["Number"] == pokedex_id):
-                num = str(p["Number"])
-                if len(num) == 1:
-                    num = '00'+num
-                elif len(num) == 2:
-                    num = '0'+num
-                img = url_for("static",filename="img/pokemons/"+num+".png")
-                return render_template("pokemon.html",data = p ,img = img,page='index', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
-        return "<p>Pokemon inconnu</p>"
+        p = PokemonController.pokemons.getPokemonByNumber(pokedex_id)
+        if p != []:
+            return render_template("pokemon.html",data = p,index='true', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
+        else:
+            return "<p>Pokemon inconnu</p>"
     
+    # afficher les details d'un pokemon selon son numero
     @app.route("/pokemon", methods=["POST"])
     def pokemonByIndex():
         pokeType = request.form["typ"]
-        if not(pokeType == ""):
+        if not(pokeType == ""): # rediriger vers pokemon type si le type est defini
             return redirect(url_for("pokemonByType",pokeType = pokeType))
-        num = int (request.form["numero"])
-        for p in PokemonController.pokemons:
-            if(p["Number"] == num):
-                num = str(p["Number"])
-                if len(num) == 1:
-                    num = '00'+num
-                elif len(num) == 2:
-                    num = '0'+num
-                img = url_for("static", filename="img/pokemons/"+num+'.png')
-                # return render_template("pokemon.html", data = p,img = img,index='true')
-                return render_template("pokemon.html",data = p ,img = img,index='true', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
+        try: # gere le cas ou on soumet sans entrer de valeur
+            num = int (request.form["numero"])
+            p = PokemonController.pokemons.getPokemonByNumber(num)
+            if p == []:
+                return "<p>numero invalide</p>"
+            # la variable index permet de faire savoir a pokemon.html s'il s'agit d'un affichage par indexe
+            return render_template("pokemon.html",data = p, index='true', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
+        except Exception as e:
+            return redirect("/index") # on reste sur la meme page s'il n'ya pas d'entree
+        
 
-        return "<p>numero invalide</p>"
-    
-    @app.route("/pokemon/type=<string:pokeType>", methods=["GET"])
+    # afficher les pokemons d'un type precis
+    @app.route("/pokemon/pokemontype=<string:pokeType>", methods=["GET"])
     def pokemonByType(pokeType):
-        liste = []
-        for p in PokemonController.pokemons:
-            if(p["Type_1"]==pokeType or p["Type_2"]==pokeType):
-                num = str(p["Number"])
-                if len(num) == 1:
-                    num = '00'+num
-                elif len(num) == 2:
-                    num = '0'+num
-                img = url_for("static", filename="img/pokemons/"+num+'.png')
-                p["url"]= img
-                liste.append(p)
-        return render_template("pokemon.html",liste = liste,type = 'true', metadata ={"title":'Pokemons view', "pagename":'pokemon'})        
-        # return render_template("pokemon.html",liste = liste,type = 'true')
+        pokemonList = PokemonController.pokemons.getPokemonByType(pokeType)
+        # la variable index permet de faire savoir a pokemon.html s'il s'agit d'un affichage par indexe
+        return render_template("pokemon.html",liste = pokemonList,type = 'true', metadata ={"title":'Pokemons view', "pagename":'pokemon'})        
+
+        
                 
         
