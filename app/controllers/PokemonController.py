@@ -27,8 +27,8 @@ class PokemonController:
             if p == []:
                 return "<p>numero invalide</p>"
             # la variable index permet de faire savoir a pokemon.html s'il s'agit d'un affichage par indexe
-            return render_template("pokemon.html",data = p, index='true', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
-        except Exception as e:
+            return render_template("pokemon.html",liste = p, index='true', metadata ={"title":'Pokemon view', "pagename":'pokemon'})
+        except ValueError as e:
             return redirect("/index") # on reste sur la meme page s'il n'ya pas d'entree
         
 

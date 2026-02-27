@@ -3,7 +3,7 @@ from app.models.pokemonJsonDAO import PokemonJsonDAO as PokemonDAO
 class PokemonService:
     
     pokemonDAO = PokemonDAO()
-    def __init__():
+    def __init__(self):
         PokemonService.pokemonDAO = PokemonDAO()
 
     def getPokemonByNumber(self,number):
