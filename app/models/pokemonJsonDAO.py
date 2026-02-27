@@ -6,7 +6,7 @@ class PokemonJsonDAO:
 
     pokemons = []
     def __init__(self):
-        with open(app.static_folder+"/data/pokemoons.json", "r", encoding="UTF-8") as f:
+        with open(app.static_folder+"/data/pokemons.json", "r", encoding="UTF-8") as f:
             PokemonJsonDAO.pokemons = json.load(f)
 
     def findAll(self):

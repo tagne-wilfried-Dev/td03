@@ -11,12 +11,9 @@ form{
 }
 form>input,form>select{
     border: 1px ridge black;
-    box-shadow: 4px 0 10px black;
-    margin: 0 0 5px 0;
+    box-shadow: 4px 0 5px black;
 }
-form>select{
-    margin-top: 10px;
-}
+
 nav{
     background-color: azure;
     
@@ -40,44 +37,49 @@ nav>ul>li{
 } */
 
 main{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        form{
-            display: inline-block;
-            padding: 20px;
-            border: 2px ridge rgba(131, 228, 171, 0.473);
-        }
-        form>input,form>select{
-            border: 1px ridge black;
-            box-shadow: 4px 0 10px black;
-            margin: 0 0 5px 0;
-        }
-        form>select{
-            margin-top: 10px;
-        }
-        nav{
-            background-color: azure;
-            
-        }
-        nav ul{
-            list-style: none;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 20px;
-            font-size: larger;
-            
-        }
-        nav>ul>li{
-            color: rgb(138, 135, 132);
-            cursor: pointer;
-        }
-        nav>ul>li:has(>.active){
-            color: green;
-            font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: inline-block;
+    padding: 20px;
+    border: 2px ridge rgba(131, 228, 171, 0.473);
+}
+form>input,form>select{
+    border: 1px ridge black;
+    box-shadow: 4px 0 10px black;
+    margin: 0 0 5px 0;
+}
+form>select{
+    margin-top: 10px;
+}
+nav{
+    background-color: azure;
+    
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    font-size: larger;
+    
+}
+nav>ul>li{
+    color: rgb(138, 135, 132);
+    cursor: pointer;
+}
+nav>ul>li:has(>.active){
+    color: green;
+    font-weight: bolder;
 
-            /* border: 2px solid rgba(7, 102, 30, 0.43);
-            border-radius: 50%; */
-        }
+    /* border: 2px solid rgba(7, 102, 30, 0.43);
+    border-radius: 50%; */
+}
+.btn-block{
+    display: block;
+    margin: 20px auto 0 auto;
+    width: 200px;
+}

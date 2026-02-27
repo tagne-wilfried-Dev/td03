@@ -21,7 +21,7 @@ class Pokemon:
         self.speed=dict["Speed"]
         self.generation=dict["Generation"]
 
-    def getGobalDefense(self):
+    def getGlobalDefense(self):
         return self.hP*math.sqrt(self.defense*self.spDefense)
     
     def getGlobalAttack(self):
@@ -29,5 +29,5 @@ class Pokemon:
     
     # pour avoir l'url de l'img d'un pokemon
     def getUrl(self):
-        return url_for("static", filename="img/pokemons"+Pokemon.threeDigit(self.number)+".png")
+        return url_for("static", filename="img/pokemons/"+Pokemon.threeDigit(self.number)+".png")
     

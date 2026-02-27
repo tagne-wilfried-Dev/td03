@@ -1,41 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if index=='true' %}
+{% for data in liste %}
     <div class="card">
-			
 	<img class="card-img-top" src="{{ data.getUrl() }}" alt="{{ data .name }} image">
-	
 	<div class="card-body">
 		<h1 class="card-title">{{ data .name | french | capitalize}}</h1> <span class="badge rounded-pill text-bg-light"><i class="bi bi-hammer"></i>{{ data.getGlobalAttack() | round }}</span><span class="badge rounded-pill text-bg-light"><i class="bi bi-shield"></i>{{ data.getGlobalDefense() | round }}</span>
-		
 		<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#{{ data .name }}">See stats</button>
-
 		<div id="{{ data .name }}" class="collapse">
-			
 				<p class="card-text"><strong>number:</strong> {{ data.number }}</p>
-			
 				<p class="card-text"><strong>name:</strong> {{ data.name | french | capitalize  }}</p>
-			
 				<p class="card-text"><strong>type1:</strong> {{ data.type }} </p>
-			
 				<p class="card-text"><strong>generation:</strong> {{ data.generation }} </p>
-			
 				<p class="card-text"><strong>attack:</strong> {{ data.attack }} </p>
-			
 				<p class="card-text"><strong>defense:</strong>{{ data.defense }} </p>
-			
 				<p class="card-text"><strong>sp_atk:</strong> {{ data.spAttack }} </p>
-			
 				<p class="card-text"><strong>sp_def:</strong> {{ data.spDefense }} </p>
-			
 				<p class="card-text"><strong>speed:</strong> {{ data.speed }} </p>
-			
-				<p class="card-text"><strong>hp:</strong> {{ data.hP }} </p>
-			
+				<p class="card-text"><strong>hp:</strong> {{ data.hP }} </p>	
 		</div>
 
 	</div>
 </div>
+{% endfor %}
 {% endif %}
 {% if type=='true' %}
 <div class="row row-cols-4">			
